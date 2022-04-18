@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import Heading from '../components/Heading';
-import styles from '../styles/Home.module.scss';
 import Socials from '../components/Socials';
+import { GetStaticProps } from 'next';
+import styles from '../styles/Home.module.scss';
 
-export const getStaticProps = async () => {
+
+export const getStaticProps: GetStaticProps = async () => {
     const response = await fetch(`${process.env.API_HOST}/socials/`);
     const data = await response.json();
 
@@ -23,7 +25,7 @@ const Home = ({ socials }) => (
         <Head>
             <title>Home</title>
         </Head>
-        <Heading text='Next.js Application' />
+        <Heading text='Next.js Application'/>
         <Socials socials={socials} />
     </div>
 );
